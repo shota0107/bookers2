@@ -6,4 +6,8 @@ class UsersController < ApplicationController
 
   def edit
   end
+  
+  def index
+    @books = Book.new
+  end 
 end

@@ -1,9 +1,11 @@
 class BooksController < ApplicationController
   def new
-    @Books = Books.new
+    @Books = Book.new
   end
 
   def index
+    @books = Book.all
+    @user = current_user
   end
 
   def show
