@@ -1,6 +1,5 @@
 <%= render 'list', user: @user %>
 
-<%= image_tag @user.get_profile_image(100,100) %>
 
 <h1>New book</h1>
 <%= form_with model: Book.new do |f| %>
@@ -12,5 +11,20 @@
 
   <%= f.submit 'Create Book' %>
 <% end %>
+<div>
+  <%= link_to user_path(@user.id) do %>
+      <%= image_tag @user.get_profile_image(100,100) %>
+    <% end %>
+  <p>Title:<%= link_to "#{@book.title}",book_path(@book.id) %></p>
+  <p>Body:<%= @book.body %></p>
 
+
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+
+
+
+  <% if @book.user = current_user %>
+      <%= link_to "Destroy", book_path(@book), method: :delete %>
+    <% end %>
+</div>
 
