@@ -1,16 +1,4 @@
-<h1>User info</h1>
-<%= image_tag @user.get_profile_image(100,100) %>
-<table class="table">
-  <tbody><tr></tr>
-  <tr>
-	  <th>name</th>
-	  <th><%= @user.name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= @user.introduction %></th>
-  </tr>
-</tbody></table>
+<%= render 'user/list', user: @user %>
 
 <span>
     <%=link_to edit_user_path(@user.id),class: "btn btn-outline-secondary btn-block" do %>
@@ -35,5 +23,16 @@
 
   <%= f.submit 'Creat Book' %>
   <% end %>
+
+<% end %>
+
+<h1>Users</h1>
+
+<% @books.each do |book| %>
+<%= image_tag @user.get_profile_image(100,100) %>
+
+
+  <p>name</p>
+  <span><%= book.title %></span>
 
 <% end %>

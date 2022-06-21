@@ -6,8 +6,13 @@ class UsersController < ApplicationController
 
   def edit
   end
-  
+
   def index
     @books = Book.new
-  end 
+    @books = Book.all
+  end
+  private
+  def user_params
+    params.require(:user).permit(:title, :body)
+  end
 end
