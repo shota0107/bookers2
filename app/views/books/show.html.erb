@@ -1,6 +1,7 @@
+
 <%= render 'list', user: @user %>
 
-
+<div>
 <h1>New book</h1>
 <%= form_with model: Book.new do |f| %>
   <h4>Title</h4>
@@ -26,5 +27,8 @@
   <% if @book.user = current_user %>
       <%= link_to "Destroy", book_path(@book), method: :delete %>
     <% end %>
+</div>
+
+
 </div>
 

@@ -1,10 +1,17 @@
-<h1>Books#edit</h1>
+<%= flash[:notice] %>
+
+
+<h1>Editing Book</h1>
 <%= form_with model: Book.new do |f| %>
-  <h4>Name</h4>
+  <h4>Title</h4>
   <%= f.text_field :title %>
 
-  <h4>Introduction</h4>
+  <h4>Opinion</h4>
   <%= f.text_area :body %>
 
-  <%= f.submit 'Creat Book' %>
-  <% end %>
+  <%= f.submit 'Update Book' %>
+<% end %>
+
+<%= link_to "Show", book_path(@book.id) %>
+
+<%= link_to "Back", books_path %>
