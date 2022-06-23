@@ -6,9 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-     @user = User.find(params[:id])
-
-
+    # @user = User.find(params[:id])
   end
 
   def index
@@ -17,15 +15,21 @@ class UsersController < ApplicationController
     @user = User.new
     @user = current_user
   end
-  def updated
+  def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:title, :body, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image)
+    @users = current_user.users
+    @user = @users.find_by(id: params[:id])
+    redirect_to new_post_path unless @user
   end
 
 end

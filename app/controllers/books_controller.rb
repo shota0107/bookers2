@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @user = current_user
   end
 
@@ -14,8 +15,12 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @book = Book.find(params[:id])
+    if @book.user == current_user
+        render "edit"
+    else
+       redirect_to books_path
+    end
 
   end
 
@@ -26,9 +31,10 @@ class BooksController < ApplicationController
      redirect_to book_path(@book.id), notice: 'successfully.'
 
     else
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    redirect_to book_path(@book.id)
+
+   @books = Book.all
+    @user = current_user
+   render :index
     end
   end
 
