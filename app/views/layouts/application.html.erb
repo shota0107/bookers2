@@ -15,7 +15,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <%= link_to 'bookers', root_path %>
+      <%= link_to 'Bookers', root_path %>
 
         <% if user_signed_in? %>
       <li>
@@ -49,7 +49,7 @@
             <%= link_to about_path, class: 'nav-link text-white' do %>
             <i class="fas fa-link"></i>About
             <% end %>
-            </li>
+          </li>
           <li>
             <%= link_to new_user_registration_path, class: 'nav-link text-white' do %>
             <i class="fas fa-user-plus"></i>Sign up
